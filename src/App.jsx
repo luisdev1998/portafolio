@@ -1,5 +1,4 @@
-import { useState,useEffect } from 'react'
-import background from './assets/background.jpeg'
+import { useState } from 'react'
 import me from './assets/foto.png'
 import miraflores from './assets/miraflores.jpeg'
 import inticraft from './assets/inticraft.png'
@@ -22,19 +21,16 @@ import javascript from './assets/javascript.png'
 
 function App() {
 
-  const [light,setLight] = useState(false); 
   const [menu,setMenu] = useState(false);
 
-  const scroll = e => {
-    //console.log(window.scrollY,window.scrollX)
+
+  const toSection = (section) => {
+    const element = document.getElementById(`${section}`);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }
   }
 
-  useEffect(() => {
-    window.addEventListener("scroll", scroll);
-    return () => {
-      window.removeEventListener("scroll", scroll);
-    };
-  }, []);
 
   return (
     <main className='h-full'>
@@ -59,29 +55,29 @@ function App() {
           <div className={`w-full md:block md:w-auto ${menu ? 'block' : 'hidden'}`} id='navbar-default'>
             <ul className='flex flex-col p-4 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-5 md:mt-0 md:text-sm md:font-medium md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700'>
               <li>
-                <a href='#' className='text-white inline-block after:block after:border-b-2 after:border-yellow-400 after:scale-x-0 after:transform after:duration-100 after:ease-in-out hover:after:scale-x-100 blockborder-b-2 border-yellow-400'>Home</a>
+                <a onClick={_=>{toSection('home')}} className='cursor-pointer text-white inline-block after:block after:border-b-2 after:border-yellow-400 after:scale-x-0 after:transform after:duration-100 after:ease-in-out hover:after:scale-x-100 blockborder-b-2 border-yellow-400'>Home</a>
               </li>
               <li>
-                <a href='#' className='text-white inline-block after:block after:border-b-2 after:border-yellow-400 after:scale-x-0 after:transform after:duration-100 after:ease-in-out hover:after:scale-x-100'>About</a>
+                <a onClick={_=>toSection('about')} className='cursor-pointer text-white inline-block after:block after:border-b-2 after:border-yellow-400 after:scale-x-0 after:transform after:duration-100 after:ease-in-out hover:after:scale-x-100'>About</a>
               </li>
               <li>
-                <a href='#' className='text-white inline-block after:block after:border-b-2 after:border-yellow-400 after:scale-x-0 after:transform after:duration-100 after:ease-in-out hover:after:scale-x-100'>Experience</a>
+                <a onClick={_=>toSection('experience')} className='cursor-pointer text-white inline-block after:block after:border-b-2 after:border-yellow-400 after:scale-x-0 after:transform after:duration-100 after:ease-in-out hover:after:scale-x-100'>Experience</a>
               </li>
               <li>
-                <a href='#' className='text-white inline-block after:block after:border-b-2 after:border-yellow-400 after:scale-x-0 after:transform after:duration-100 after:ease-in-out hover:after:scale-x-100'>Skills</a>
+                <a onClick={_=>toSection('skills')} className='cursor-pointer text-white inline-block after:block after:border-b-2 after:border-yellow-400 after:scale-x-0 after:transform after:duration-100 after:ease-in-out hover:after:scale-x-100'>Skills</a>
               </li>
               <li>
-                <a href='#' className='text-white inline-block after:block after:border-b-2 after:border-yellow-400 after:scale-x-0 after:transform after:duration-100 after:ease-in-out hover:after:scale-x-100'>Projects</a>
+                <a onClick={_=>toSection('projects')} className='cursor-pointer text-white inline-block after:block after:border-b-2 after:border-yellow-400 after:scale-x-0 after:transform after:duration-100 after:ease-in-out hover:after:scale-x-100'>Projects</a>
               </li>
               <li>
-                <a href='#' className='text-white inline-block after:block after:border-b-2 after:border-yellow-400 after:scale-x-0 after:transform after:duration-100 after:ease-in-out hover:after:scale-x-100'>Contact</a>
+                <a onClick={_=>toSection('contact')} className='cursor-pointer text-white inline-block after:block after:border-b-2 after:border-yellow-400 after:scale-x-0 after:transform after:duration-100 after:ease-in-out hover:after:scale-x-100'>Contact</a>
               </li>
             </ul>
           </div>
         </div>
       </nav>
 
-      <section className='pb-[8%]'>
+      <section className='pb-[8%]' id='home'>
         <div className='flex items-center justify-center'>
           <div className='w-full p-10 max-w-lg xl:max-w-6xl lg:max-w-4xl md:max-w-2xl'>
             <div className='flex items-center justify-center md:pt-[15%] lg:pt-[10%]'>
@@ -104,10 +100,10 @@ function App() {
                     FULL STACK DEVELOPER
                   </span>
                 </div>
-                <button className='text-black bg-yellow-500 p-5 rounded-full font-light w-44 text-sm mr-2 xl:text-2xl xl:w-64'>
-                  MY EXPERIENCE
+                <button onClick={_=>window.open('https://profile.luissanchez.site/cv/curriculum_fs_eng.pdf','_blank')} className='text-black bg-yellow-500 p-5 mb-3 rounded-full font-light w-44 text-sm mr-2 xl:text-xl xl:w-64'>
+                  DOWNLOAD CV
                 </button>
-                <button className='text-white bg-transparent p-5 border border-white rounded-full font-light w-44 text-sm xl:text-2xl xl:w-64'>
+                <button onClick={_=>window.open(`https://api.whatsapp.com/send/?phone=51904789672&text=Hi+Luis+I%27m+interested+in+having+a+conversation+with+you&type=phone_number&app_absent=0`,'_blank')} className='text-white bg-transparent p-5 border border-white rounded-full font-light w-44 text-sm xl:text-xl xl:w-64'>
                   HIRE ME
                 </button>
               </div>
@@ -122,7 +118,7 @@ function App() {
       </section>
 
 
-      <section className='pb-[8%]'>
+      <section className='pb-[8%]' id='about'>
         <div className='flex items-center justify-center'>
           <div className='w-full p-10 max-w-lg xl:max-w-6xl lg:max-w-4xl md:max-w-2xl'>
             <div className=' font-extrabold text-4xl md:text-center md:text-5xl xl:text-7xl'>
@@ -151,8 +147,8 @@ function App() {
                     </div>
                   </div>
                 <br/>
-                <button className='text-black p-3 bg-yellow-400 rounded-full font-light text-sm xl:text-xl xl:w-64'>
-                  DOWNLOAD CV
+                <button onClick={_=>window.open('https://www.linkedin.com/in/luissancheztapia98/','_blank')} className='text-black p-3 bg-yellow-400 rounded-full font-light text-sm xl:text-xl xl:w-64'>
+                  LinkedIn Profile
                 </button>
               </div>
               <div className='xl:w-full'>
@@ -164,7 +160,7 @@ function App() {
       </section>
 
 
-      <section className='pb-[8%]'>
+      <section className='pb-[8%]' id='experience'>
         <div className='flex items-center justify-center'>
           <div className='w-full p-10 max-w-lg xl:max-w-6xl lg:max-w-4xl md:max-w-2xl'>
             <div className='font-extrabold text-4xl md:text-center md:text-5xl xl:text-7xl'>
@@ -216,7 +212,7 @@ function App() {
       </section>
 
 
-      <section className='pb-[8%]'>
+      <section className='pb-[8%]' id='skills'>
         <div className='flex items-center justify-center'>
           <div className='w-full p-10 max-w-lg xl:max-w-6xl lg:max-w-4xl md:max-w-2xl'>
             <div className='font-extrabold text-4xl md:text-center md:text-5xl xl:text-7xl'>
@@ -487,7 +483,7 @@ function App() {
       </section>
 
 
-      <section className='pb-[8%]'>
+      <section className='pb-[8%]' id='projects'>
         <div className='flex items-center justify-center'>
           <div className='w-full p-10 max-w-lg xl:max-w-6xl lg:max-w-4xl md:max-w-2xl'>
             <div className='text-white font-extrabold text-4xl md:text-center md:text-5xl xl:text-7xl'>
@@ -591,7 +587,7 @@ function App() {
       </section>
 
 
-      <section className='pb-[8%]'>
+      <section className='pb-[8%]' id='contact'>
         <div className='flex items-center justify-center'>
           <div className='w-full p-10 max-w-lg xl:max-w-6xl lg:max-w-4xl md:max-w-2xl'>
             <div className='font-extrabold text-4xl md:text-center md:text-5xl xl:text-7xl'>
@@ -602,7 +598,7 @@ function App() {
               <div className='flex justify-center'>
                 <a className='bg-zinc-900 p-7 rounded-full' href='https://www.linkedin.com/in/luissancheztapia98/' target='_blank'>
                   <svg
-                    className='text-gray-400 w-14 h-14'
+                    className='text-gray-400 w-10 h-10 md:w-14 md:h-14'
                     fill="currentColor"
                     viewBox="0 0 16 16"
                     height="1em"
@@ -615,7 +611,7 @@ function App() {
               <div className='flex justify-center'>
                 <a className='bg-zinc-900 p-7 rounded-full' href='https://www.instagram.com/stluis98/?igshid=YmMyMTA2M2Y%3D' target='_blank'>
                   <svg
-                    className='text-gray-400 w-14 h-14'
+                    className='text-gray-400 w-10 h-10 md:w-14 md:h-14'
                     viewBox="0 0 1024 1024"
                     fill="currentColor"
                     height="1em"
@@ -628,7 +624,7 @@ function App() {
               <div className='flex justify-center'>
                 <a className='bg-zinc-900 p-7 rounded-full' href='https://github.com/luisdev1998' target='_blank'>
                   <svg
-                    className='text-gray-400 w-14 h-14'
+                    className='text-gray-400 w-10 h-10 md:w-14 md:h-14'
                     viewBox="0 0 1024 1024"
                     fill="currentColor"
                     height="1em"
