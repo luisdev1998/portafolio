@@ -252,7 +252,7 @@ function App() {
           <img src={me} className="home-img"/>
         </div>
         <div className='home-buttons'>
-          <a href='https://profile.luissanchez.site/cv/curriculum_fs_eng.pdf' target='_blank' className='btn btn-1'>MY RESUME</a>
+          <a href='https://profile.luissanchez.site/SOFTWARE_ENGINEER.pdf' target='_blank' className='btn btn-1'>MY RESUME</a>
           <a href='https://api.whatsapp.com/send/?phone=51904789672&text=Hi+Luis+I%27m+interested+in+having+a+conversation+with+you&type=phone_number&app_absent=0' target='_blank' className='btn btn-2'>HIRE ME</a>
         </div>
       </section>
